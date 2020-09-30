@@ -1,0 +1,25 @@
+{
+	"data": {
+		"storage": "AAAAVY24X45N921R",
+		"madbase": "33804205",
+		"armane": "12900",
+		"bus": [
+			{
+				"cid": "1111111",
+				"cloud": "string",
+				"lilith": [
+					{
+						"warz": "111111",
+						"powa": "000000"
+					},
+					{
+						"made": "222222",
+						"rif": "999999"
+					}
+				]
+			}
+		],
+		"total": 0,
+		"fifty": "string"
+	}
+}

@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.stream.bindings.error.destination",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.stream.bindings.error.destination."
+    }
+  ]
+}
