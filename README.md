@@ -1,1 +1,3 @@
-json-projection-lib
+# Filter JSON
+
+## Filter your JSON by key value!
