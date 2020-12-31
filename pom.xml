@@ -9,10 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.json2proj</groupId>
-	<artifactId>json-projection-lib</artifactId>
+	<artifactId>filter-json</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>filter-json</name>
 	<description>Lib to filtering your JSON!</description>
 
 	<properties>

@@ -1,4 +1,4 @@
-package json2proj.service;
+package filterJson.service;
 
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class ProjectionService {
+public class FilterJsonService {
     public Object projection(Object jsonString, String path) throws JSONException {
         Object jsonObj = new JSONTokener(jsonString.toString()).nextValue();
         String[] pathList = path.split(",");

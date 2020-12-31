@@ -1,4 +1,4 @@
-package json2proj.service;
+package filterJson.service;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,17 +16,17 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static org.junit.matchers.JUnitMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.matchers.JUnitMatchers.containsString;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = ProjectionService.class)
+@ContextConfiguration(classes = FilterJsonService.class)
 @SpringBootTest
-public class ProjectionServiceTest {
+public class FilterJsonServiceTest {
 
 	@Autowired
-	private ProjectionService projectionService;
+	private FilterJsonService filterJsonService;
 
 	private JSONArray dataArray;
 
@@ -59,7 +59,7 @@ public class ProjectionServiceTest {
 	public void whenIsJsonThenProjectionIt() throws JSONException {
 		String fields = "data.storage,data.bus.cid";
 		
-		Object result = projectionService.projection(dataObj.toString(), fields);
+		Object result = filterJsonService.projection(dataObj.toString(), fields);
 		assertThat(result.toString(), containsString("storage"));
 		assertThat(result.toString(), containsString("cid"));
 
@@ -69,7 +69,7 @@ public class ProjectionServiceTest {
 	public void whenNestedFieldDoesNotExistFOrJsonThenEmptyJson() throws JSONException {
 		String fields = "data.storageThatNotExits,data.busThatNotExists";
 
-		Object result = projectionService.projection(dataObj.toString(), fields);
+		Object result = filterJsonService.projection(dataObj.toString(), fields);
 		JSONObject resulObj = new JSONObject(result.toString());
 		assertThat(result.toString(), containsString("data"));
 		JSONObject dataObj = (JSONObject) resulObj.get("data");
@@ -80,7 +80,7 @@ public class ProjectionServiceTest {
 	public void whenFieldContainsJsonArrayThenProjectionIt() throws JSONException {
 		String fields = "data.fifty,data.bus.lilith.warz,data.total";
 		
-		Object result = projectionService.projection(dataObj.toString(), fields);
+		Object result = filterJsonService.projection(dataObj.toString(), fields);
 		assertThat(result.toString(), containsString("bus"));
 		assertThat(result.toString(), containsString("lilith"));
 		assertThat(result.toString(), containsString("warz"));
@@ -94,7 +94,7 @@ public class ProjectionServiceTest {
 		String fields = "data.bus.cloud";
 
 		
-		Object result = projectionService.projection(dataArray.toString(), fields);
+		Object result = filterJsonService.projection(dataArray.toString(), fields);
 		assertThat(result.toString(), containsString("bus"));
 		assertThat(result.toString(), containsString("cloud"));
 
@@ -104,7 +104,7 @@ public class ProjectionServiceTest {
 	public void whenJsonInputIsArrayAndfieldsContainsObjectThenProjectionIt() throws JSONException {
 		String fields = "data.bus.lilith,data.fifty";
 		
-		Object result = projectionService.projection(dataArray.toString(), fields);
+		Object result = filterJsonService.projection(dataArray.toString(), fields);
 		assertThat(result.toString(), containsString("lilith"));
 		assertThat(result.toString(), containsString("fifty"));
 
@@ -114,7 +114,7 @@ public class ProjectionServiceTest {
 	public void whenNestedFieldDoesNotExistThenEmptyJson() throws JSONException {
 		String fields = "data.bus.cloud";
 
-		Object result = projectionService.projection(dataArray.toString(), fields);
+		Object result = filterJsonService.projection(dataArray.toString(), fields);
 		assertThat(result.toString(), containsString("cloud"));
 
 	}
@@ -123,7 +123,7 @@ public class ProjectionServiceTest {
 	public void whenOneNestedFieldsDoesNotExistAndAnotherYesThenOnlyOneFieldIsProjected() throws JSONException {
 		String fields = "data.bus.cloud,data.bus.cloudThatNotExists";
 
-		Object result = projectionService.projection(dataArray.toString(), fields);
+		Object result = filterJsonService.projection(dataArray.toString(), fields);
 		assertThat(result.toString(), containsString("bus"));
 
 	}
@@ -132,7 +132,7 @@ public class ProjectionServiceTest {
 	public void whenNestedFieldsDoesNotExistThenEmptyJson() throws JSONException {
 		String fields = "data.bus.NotExists,data.bus.cid";
 
-		Object result = projectionService.projection(dataArray.toString(), fields);
+		Object result = filterJsonService.projection(dataArray.toString(), fields);
 		assertThat(result.toString(), containsString("cid"));
 
 	}
@@ -141,7 +141,7 @@ public class ProjectionServiceTest {
 	public void whenSingleFieldDoesNotExistThenEmptyJson() throws JSONException {
 		String fields = "header";
 
-		Object result = projectionService.projection(dataArray.toString(), fields);
+		Object result = filterJsonService.projection(dataArray.toString(), fields);
 		JSONArray resultArray = new JSONArray(result.toString());
 		resultArray.forEach(item -> {
 			JSONObject obj = (JSONObject) item;

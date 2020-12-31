@@ -1,7 +1,7 @@
-package json2proj.controller;
+package filterJson.controller;
 
 
-import json2proj.service.ProjectionService;
+import filterJson.service.FilterJsonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RestController {
 
     @Autowired
-    private ProjectionService projectionService;
+    private FilterJsonService filterJsonService;
 
     Logger LOGGER = LoggerFactory.getLogger(RestController.class);
 
@@ -32,7 +32,7 @@ public class RestController {
         LOGGER.info("Request Values {} : " + values);
 
         try {
-            String response = projectionService.projection(jsonString, values).toString();
+            String response = filterJsonService.projection(jsonString, values).toString();
             LOGGER.info("Response {} : " + response);
             return ResponseEntity
                     .status(HttpStatus.CREATED)
