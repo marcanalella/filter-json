@@ -43,25 +43,25 @@ provides the following response:
 ```
 [
   {
-      "one": 2,
+      "id": 2,
       "three": {
           "point_1": "point_2",
           "point_3": 3.4
       },
       "list": [
-          "one" : 1,
+          "foo" : 1,
           "two" : 2,
           "three" : 3 
       ]
   },
   {
-      "one": 2,
+      "id": 2,
       "three": {
           "point_1": "point_2",
           "point_3": 3.4
       },
       "list": [
-          "one" : 1,
+          "foo" : 1,
           "two" : 2,
           "three" : 3 
       ]
@@ -69,24 +69,24 @@ provides the following response:
 ]
 ```
 
-To retrieve one field and all one inside a JSON Array, this POST call to retrieve these objects 
+To retrieve id field and all foo values inside JSON Array, this POST call to retrieve these objects 
 
-`POST https:/localhost:8080/api/v1/getJson?values=list.one,one`
+`POST https:/localhost:8080/api/v1/getJson?values=list.foo,id`
 
 provides the following response:
 
 ```
 [
   {
-      "one": 2,
+      "id": 2,
       "list": [
-          "one" : 1
+          "foo" : 1
       ]
   },
   {
-      "one": 3,
+      "id": 3,
       "list": [
-          "one" : 1
+          "foo" : 1
       ]
   }
 ]
