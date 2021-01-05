@@ -8,7 +8,7 @@ By default, services may return some informations that your application doesn't 
 
 All the filtering process takes place recursively and it works for both JSON Object and JSON Array.
 
-Field projections are defined using the `&values=` query parameter and narrowed by providing a comma-separated list of field names that you want returned as the value of the parameter.
+Field projections are defined using the `?values=` query parameter and narrowed by providing a comma-separated list of field names that you want returned as the value of the parameter.
 
 This software can be used used as a microservice with a REST API or as a library that can be integrated into your Java application.
 
@@ -27,7 +27,7 @@ This software can be used used as a microservice with a REST API or as a library
 
 To retrieve id and foo fields, this POST call to retrieve these objects 
 
-`POST  https:/localhost:8080/api/v1/getJson&values=id,foo`
+`POST  https:/localhost:8080/api/v1/getJson?values=id,foo`
 
 provides the following response:
 
@@ -71,7 +71,7 @@ provides the following response:
 
 To retrieve one field and all one inside a JSON Array, this POST call to retrieve these objects 
 
-`POST https:/localhost:8080/api/v1/getJson&values=list.one,one`
+`POST https:/localhost:8080/api/v1/getJson?values=list.one,one`
 
 provides the following response:
 
