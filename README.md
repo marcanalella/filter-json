@@ -12,8 +12,6 @@ Field projections are defined using the `?values=` query parameter and narrowed 
 
 This software can be used used as a microservice with a REST API or as a library that can be integrated into your Java application.
 
-// TODO dockerize this Java application
-
 ## Sample JSON Object Example
 
 ```
