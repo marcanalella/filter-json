@@ -8,11 +8,11 @@ By default, services may return some informations that your application doesn't 
 
 All the filtering process takes place recursively and it works for both JSON Object and JSON Array.
 
-Field projections are defined using the `?values=` query parameter and narrowed by providing a comma-separated list of field names that you want returned as the value of the parameter.
+This software has been structured as indipendent microservice with a REST API but it can also be used as a library that can be integrated into your Java application.
 
-This software can be used used as a microservice with a REST API or as a library that can be integrated into your Java application.
+To make possible the filtering process, application need all JSON Body in a POST request and field projections that are defined using the `?values=` on query parameter.
 
-## Sample JSON Object Example
+## Example with a JSON Object request
 
 ```
 {
@@ -23,7 +23,7 @@ This software can be used used as a microservice with a REST API or as a library
 }
 ```
 
-To retrieve id and foo fields, this POST call to retrieve these objects 
+To retrieve id and foo fields, this POST call
 
 `POST  https:/localhost:8080/api/v1/getJson?values=id,foo`
 
@@ -36,7 +36,7 @@ provides the following response:
 }
 ```
 
-## Sample JSON Array Example
+## Example with a JSON Array request
 
 ```
 [
@@ -67,9 +67,9 @@ provides the following response:
 ]
 ```
 
-To retrieve id field and all foo values inside JSON Array, this POST call to retrieve these objects 
+To retrieve id and foo values inside JSON Array, this POST call
 
-`POST https:/localhost:8080/api/v1/getJson?values=list.foo,id`
+`POST https:/localhost:8080/api/v1/getJson?values=id,list.foo`
 
 provides the following response:
 
