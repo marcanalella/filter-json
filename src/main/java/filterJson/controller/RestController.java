@@ -38,7 +38,7 @@ public class RestController {
                     .status(HttpStatus.CREATED)
                     .body(response);
         } catch (Exception e) {
-            LOGGER.info("Error Parsing JSON: " + e.getMessage());
+            LOGGER.info("Error Parsing JSON: {}", e);
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error Parsing JSON: " + e.getMessage());
