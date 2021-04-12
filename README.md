@@ -12,7 +12,11 @@ This software has been structured as indipendent microservice with a REST API
 
 ## How it works
 
-Application expose `/api/v1/getJson` API to retrieve filtered JSON. Field projections have to be defined using the query param`?values=` with values followed by comma. If the data is nested, add a dot to the desired value to be filtered. Finally, to make possible the filtering process, application need all JSON Body in a POST request.
+Application expose `/api/v1/getJson` API to retrieve filtered JSON. Field projections have to be defined using the query param `?values=` with values followed by comma. 
+
+If the data is nested, add a dot to the desired value to be filtered. 
+
+Finally, to make possible the filtering process, application need all JSON Body in a POST request.
 
 ## Example with a JSON Object request
 
