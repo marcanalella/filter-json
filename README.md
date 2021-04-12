@@ -8,11 +8,17 @@ By default, services may return some informations that your application doesn't 
 
 All the filtering process takes place recursively and it works for both JSON Object and JSON Array.
 
-This software has been structured as indipendent microservice with a REST API but it can also be used as a library that can be integrated into your Java application.
+This software has been structured as indipendent microservice with a REST API
 
-To make possible the filtering process, application need all JSON Body in a POST request and field projections that are defined using the `?values=` on query parameter.
+## How it works
+
+Application expose `/api/v1/getJson` API to retrieve filtered JSON. Field projections have to be defined using the query param`?values=` with values followed by comma. If the data is nested, add a dot to the desired value to be filtered. Finally, to make possible the filtering process, application need all JSON Body in a POST request.
 
 ## Example with a JSON Object request
+
+To retrieve id and foo fields, this POST call
+
+`POST  https:/localhost:8080/api/v1/getJson?values=id,foo`
 
 ```
 {
@@ -22,10 +28,6 @@ To make possible the filtering process, application need all JSON Body in a POST
     "baz": Object
 }
 ```
-
-To retrieve id and foo fields, this POST call
-
-`POST  https:/localhost:8080/api/v1/getJson?values=id,foo`
 
 provides the following response:
 
@@ -38,6 +40,9 @@ provides the following response:
 
 ## Example with a JSON Array request
 
+To retrieve id and foo values inside JSON Array, this POST call
+
+`POST https:/localhost:8080/api/v1/getJson?values=id,list.foo`
 ```
 [
   {
@@ -66,10 +71,6 @@ provides the following response:
   }
 ]
 ```
-
-To retrieve id and foo values inside JSON Array, this POST call
-
-`POST https:/localhost:8080/api/v1/getJson?values=id,list.foo`
 
 provides the following response:
 
