@@ -37,8 +37,8 @@ provides the following response:
 
 ```
 {
-    "foo": "string",
-    "id": int
+    "id": int,
+    "foo": "string"
 }
 ```
 
